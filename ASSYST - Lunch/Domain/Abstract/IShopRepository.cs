@@ -10,5 +10,6 @@ namespace Domain.Abstract
     public interface IShopRepository
     {
         IEnumerable<Shop> Shops { get; }
+        void SaveShop(Shop shop);
     }
 }

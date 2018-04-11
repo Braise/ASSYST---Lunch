@@ -1,3 +1,5 @@
+using Domain.Abstract;
+using Domain.Concrete;
 using System;
 
 using Unity;
@@ -36,12 +38,19 @@ namespace WebUI
         /// </remarks>
         public static void RegisterTypes(IUnityContainer container)
         {
-            // NOTE: To load from web.config uncomment the line below.
-            // Make sure to add a Unity.Configuration to the using statements.
-            // container.LoadConfiguration();
+            RegisterDomainTypes(container);
+        }
 
-            // TODO: Register your type's mappings here.
-            // container.RegisterType<IProductRepository, ProductRepository>();
+        private static void RegisterDomainTypes(IUnityContainer container)
+        {
+            container.RegisterType<IExtraByOrderLineRepository, EFExtraByOrderLineRepository>();
+            container.RegisterType<IExtraByShopRepository, EFExtraByShopRepository>();
+            container.RegisterType<IExtraRepository, EFExtraRepository>();
+            container.RegisterType<IOrderLineRepository, EFOrderLineRepository>();
+            container.RegisterType<IOrderRepository, EFOrderRepository>();
+            container.RegisterType<IProductRepository, EFProductRepository>();
+            container.RegisterType<IShopRepository, EFShopRepository>();
+            container.RegisterType<IUserRepository, EFUserRepository>();
         }
     }
 }

@@ -16,9 +16,15 @@ namespace Test
             {
                 EFUserRepository efUser = new EFUserRepository();
 
-                var users = efUser.Users;
+                IList<User> users = efUser.Users.ToList();
 
-                int i = 0;
+                Console.WriteLine(users.Count);
+
+                foreach(User u in users)
+                {
+                    Console.WriteLine(u.Firstname);
+                }
+
             }
             catch(Exception ex)
             {

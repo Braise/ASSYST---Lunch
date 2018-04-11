@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Abstract
 {
-    interface IExtraRepository
+    public interface IExtraRepository
     {
         IEnumerable<Extra> Extras { get; }
     }

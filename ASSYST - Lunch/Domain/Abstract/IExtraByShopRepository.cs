@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Abstract
 {
-    interface IExtraByShopRepository
+    public interface IExtraByShopRepository
     {
         IEnumerable<ExtraByShop> ExtraByShops { get; }
     }

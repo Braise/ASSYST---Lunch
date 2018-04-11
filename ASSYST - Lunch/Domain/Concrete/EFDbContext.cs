@@ -13,9 +13,7 @@ namespace Domain.Concrete
     {
         public EFDbContext() : base("Lunch")
         {
-        //    User user = new User() { Firstname = "Bastien", Lastname = "Boonen" };
-        //    Users.Add(user);
-        //    SaveChanges();
+
         }
 
         public DbSet<Extra> Extras { get; set; }

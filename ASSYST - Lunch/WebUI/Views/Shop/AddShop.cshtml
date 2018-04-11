@@ -1,0 +1,14 @@
+﻿@model Domain.Entities.Shop
+
+@using (Html.BeginForm())
+{
+    @foreach(ModelMetadata property in ViewData.ModelMetadata.Properties)
+    {
+        if (!property.PropertyName.Equals("IsActive"))
+        {
+            <label>@property.DisplayName</label>
+            @Html.TextBox(property.PropertyName)
+        }
+    }
+}
+

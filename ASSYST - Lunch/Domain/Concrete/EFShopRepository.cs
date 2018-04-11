@@ -15,5 +15,11 @@ namespace Domain.Concrete
         public IEnumerable<Shop> Shops {
             get { return context.Shops; }
         }
+
+        public void SaveShop(Shop shop)
+        {
+            context.Shops.Add(shop);
+            context.SaveChanges();
+        }
     }
 }
