@@ -21,8 +21,13 @@ namespace WebUI.Controllers
         {
             return View(_repository.Shops);
         }
+        
+        public ViewResult CreateShop()
+        {
+            return View("EditShop", new Shop());
+        }
 
-        public ActionResult AddShop(Shop shop)
+        public ActionResult EditShop(Shop shop)
         {
             if (ModelState.IsValid)
             {
@@ -32,7 +37,6 @@ namespace WebUI.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Les informations entrées ne sont pas correctes!");
                 return View(shop);
             }
         }

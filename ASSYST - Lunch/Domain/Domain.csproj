@@ -47,8 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IExtraByOrderLineRepository.cs" />
-    <Compile Include="Abstract\IExtraByShopRepository.cs" />
     <Compile Include="Abstract\IExtraRepository.cs" />
     <Compile Include="Abstract\IOrderLineRepository.cs" />
     <Compile Include="Abstract\IOrderRepository.cs" />
@@ -56,8 +54,6 @@
     <Compile Include="Abstract\IShopRepository.cs" />
     <Compile Include="Abstract\IUserRepository.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
-    <Compile Include="Concrete\EFExtraByOrderLineRepository.cs" />
-    <Compile Include="Concrete\EFExtraByShopRepository.cs" />
     <Compile Include="Concrete\EFExtraRepository.cs" />
     <Compile Include="Concrete\EFOrderLineRepository.cs" />
     <Compile Include="Concrete\EFOrderRepository.cs" />
@@ -65,19 +61,28 @@
     <Compile Include="Concrete\EFShopRepository.cs" />
     <Compile Include="Concrete\EFUserRepository.cs" />
     <Compile Include="Entities\Extra.cs" />
-    <Compile Include="Entities\ExtraByOrderLine.cs" />
-    <Compile Include="Entities\ExtraByShop.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderLine.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Shop.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Migrations\201804121958113_Initial.cs" />
+    <Compile Include="Migrations\201804121958113_Initial.Designer.cs">
+      <DependentUpon>201804121958113_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804121958113_Initial.resx">
+      <DependentUpon>201804121958113_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

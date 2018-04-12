@@ -10,5 +10,6 @@ namespace Domain.Entities
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
+        public IEnumerable<OrderLine> OrderLines { get; set; }
     }
 }

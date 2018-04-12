@@ -43,8 +43,6 @@ namespace WebUI
 
         private static void RegisterDomainTypes(IUnityContainer container)
         {
-            container.RegisterType<IExtraByOrderLineRepository, EFExtraByOrderLineRepository>();
-            container.RegisterType<IExtraByShopRepository, EFExtraByShopRepository>();
             container.RegisterType<IExtraRepository, EFExtraRepository>();
             container.RegisterType<IOrderLineRepository, EFOrderLineRepository>();
             container.RegisterType<IOrderRepository, EFOrderRepository>();

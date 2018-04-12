@@ -42,6 +42,9 @@ namespace Domain.Entities
         [Required(ErrorMessage = "Veuillez entrer une heure de commande!")]
         [Display(Name = "Commander avant")]
         public string OrderBefore { get; set; }
+
         public bool IsActive { get; set; }
+
+        public IEnumerable<Product> Products { get; set; }
     }
 }

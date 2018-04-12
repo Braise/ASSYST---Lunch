@@ -1,0 +1,28 @@
+﻿@model Domain.Entities.Shop
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Gestion Magasin</h3>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            foreach (ModelMetadata property in ViewData.ModelMetadata.Properties)
+            {
+                if (!property.PropertyName.Equals("IsActive") && !property.PropertyName.Equals("Id") && !property.PropertyName.Equals("Products"))
+                {
+                    <div class="form-group">
+                        <label>@property.DisplayName</label>
+                        @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                    </div>
+                }
+            }
+        }   
+    </div>
+    <div class="card-footer">
+        <input type="submit" value="Enregistrer" class="btn btn-primary" />
+        @Html.ActionLink("Revenir à la liste", "ListShop", null, new { @class = "btn btn-default"})
+    </div>
+</div>
+
+

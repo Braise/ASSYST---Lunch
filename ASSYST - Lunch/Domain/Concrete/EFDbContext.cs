@@ -11,14 +11,12 @@ namespace Domain.Concrete
 {
     public class EFDbContext : DbContext
     {
-        public EFDbContext() : base("Lunch")
+        public EFDbContext() : base("LunchDB")
         {
 
         }
 
         public DbSet<Extra> Extras { get; set; }
-        public DbSet<ExtraByOrderLine> ExtraByOrderLines { get; set; }
-        public DbSet<ExtraByShop> ExtraByShops { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderLine> OrderLines { get; set; }
         public DbSet<Product> Products { get; set; }
