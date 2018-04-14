@@ -1,0 +1,67 @@
+﻿@using Domain.Entities
+@model WebUI.Models.EditProductViewModel
+
+@{ 
+    List<SelectListItem> shopItems = new List<SelectListItem>();
+
+    foreach(Shop shop in Model.Shops)
+    {
+        if (Model.Product.Shop != null && shop.Guid.Equals(Model.Product.Shop.Guid))
+        {
+            shopItems.Add(new SelectListItem
+                {
+                    Text = shop.Name,
+                    Value = shop.Guid,
+                    Selected = true
+                }
+            );
+        }
+        else
+        {
+            shopItems.Add(new SelectListItem
+                {
+                    Text = shop.Name,
+                    Value = shop.Guid
+                }
+            );
+        }
+    }
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Gestion Produit</h3>
+    </div>
+    @using (Html.BeginForm("EditProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="card-body">
+            @Html.HiddenFor(g => Model.Product.Guid)
+
+                @foreach (ModelMetadata productProperties in ModelMetadataProviders.Current.GetMetadataForType(null, typeof(Product)).Properties)
+                {
+                    if (!productProperties.PropertyName.Equals("IsActive") && !productProperties.PropertyName.Equals("Shop") && !productProperties.PropertyName.Equals("Guid"))
+                    {
+                        <div class="form-group">
+                            <label>@productProperties.DisplayName</label>
+                            @Html.TextBox(productProperties.PropertyName, null, new { @class = "form-control" })
+                        </div>
+                    }
+
+                    if (productProperties.PropertyName.Equals("IsActive"))
+                    {
+                        <div class="form-group">
+                            <label>@productProperties.DisplayName</label>
+                            @Html.CheckBox(productProperties.PropertyName, false)
+                        </div>
+                    }
+                }
+
+                @Html.DropDownListFor(p => Model.Product.Shop.Guid, shopItems, "Choisissez un magasin")
+            }
+        </div>
+        <div class="card-footer">
+            <input type="submit" value="Enregistrer" class="btn btn-primary" />
+            @Html.ActionLink("Revenir à la liste", "ListProduct", null, new { @class = "btn btn-default"})
+        </div>
+    }
+</div>

@@ -70,6 +70,14 @@
     <Compile Include="Migrations\201804121958113_Initial.Designer.cs">
       <DependentUpon>201804121958113_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804140820534_ChangeIdToGuid.cs" />
+    <Compile Include="Migrations\201804140820534_ChangeIdToGuid.Designer.cs">
+      <DependentUpon>201804140820534_ChangeIdToGuid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804141415365_ChangeIdToGuid1.cs" />
+    <Compile Include="Migrations\201804141415365_ChangeIdToGuid1.Designer.cs">
+      <DependentUpon>201804141415365_ChangeIdToGuid1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -82,6 +90,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201804121958113_Initial.resx">
       <DependentUpon>201804121958113_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804140820534_ChangeIdToGuid.resx">
+      <DependentUpon>201804140820534_ChangeIdToGuid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804141415365_ChangeIdToGuid1.resx">
+      <DependentUpon>201804141415365_ChangeIdToGuid1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

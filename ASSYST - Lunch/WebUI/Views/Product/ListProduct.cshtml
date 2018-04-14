@@ -1,17 +1,42 @@
-﻿@model WebUI.Models.ProductListViewModel
-@{
-    Layout = null;
-}
+﻿@model IEnumerable<Domain.Entities.Product>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ListProduct</title>
-</head>
-<body>
-    <div> 
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Produits</h3>
     </div>
-</body>
-</html>
+    <div class="card-body">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th class="text-center">Nom</th>
+                <th class="text-center">description</th>
+                <th class="text-center">Prix</th>
+                <th class="text-center">Magasin</th>
+                <th class="text-center">Actif</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            @foreach(var product in Model)
+            {
+                <tr>
+                    <td class="text-center">@product.Name</td>
+                    <td class="text-center"@product.Description></td>
+                    <td class="text-center">@product.Price</td>
+                    <td class="text-center">@product.Shop.Name</td>
+                    <td class="text-center">
+                        @if (product.IsActive)
+                        {
+                            <label>Actif</label>
+                        }
+                        else
+                        {
+                            <label>Inactif</label>
+                        }
+                    </td>
+                    <td class="text-center">@Html.ActionLink("Modifier", "EditProduct", new { product.Guid })</td>
+                </tr>    
+            }
+        </table>
+    </div>
+    <div class="card-footer">
+        @Html.ActionLink("Ajouter un produit", "CreateProduct", null, new { @class = "btn btn-default"})
+    </div>
+</div>

@@ -4,25 +4,35 @@
     <div class="card-header">
         <h3 class="card-title">Gestion Magasin</h3>
     </div>
-    <div class="card-body">
-        @using (Html.BeginForm())
+    
+        @using (Html.BeginForm("EditShop", "Shop", FormMethod.Post, new { enctype = "multipart/form-data"}))
         {
-            foreach (ModelMetadata property in ViewData.ModelMetadata.Properties)
-            {
-                if (!property.PropertyName.Equals("IsActive") && !property.PropertyName.Equals("Id") && !property.PropertyName.Equals("Products"))
+            <div class="card-body">
+                @Html.HiddenFor(s => s.Guid)
+                @foreach (ModelMetadata property in ViewData.ModelMetadata.Properties)
                 {
-                    <div class="form-group">
-                        <label>@property.DisplayName</label>
-                        @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
-                    </div>
+                    if (!property.PropertyName.Equals("IsActive") && !property.PropertyName.Equals("Guid") && !property.PropertyName.Equals("Products"))
+                    {
+                        <div class="form-group">
+                            <label>@property.DisplayName</label>
+                            @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                        </div>
+                    }
+
+                    if (property.PropertyName.Equals("IsActive"))
+                    {
+                        <div class="form-group">
+                            <label>@property.DisplayName</label>
+                            @Html.CheckBoxFor(s => s.IsActive)
+                        </div>
+                    }
                 }
-            }
+            </div>
+            <div class="card-footer">
+                <input type="submit" value="Enregistrer" class="btn btn-primary" />
+                @Html.ActionLink("Revenir à la liste", "ListShop", null, new { @class = "btn btn-default"})
+            </div>
         }   
-    </div>
-    <div class="card-footer">
-        <input type="submit" value="Enregistrer" class="btn btn-primary" />
-        @Html.ActionLink("Revenir à la liste", "ListShop", null, new { @class = "btn btn-default"})
-    </div>
 </div>
 
 

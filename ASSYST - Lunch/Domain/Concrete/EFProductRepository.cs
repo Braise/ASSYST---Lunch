@@ -15,5 +15,28 @@ namespace Domain.Concrete
         public IEnumerable<Product> Products {
             get { return context.Products; }
         }
+
+        public void SaveProduct(Product product)
+        {
+            if (string.IsNullOrEmpty(product.Guid))
+            {
+                product.Guid = Guid.NewGuid().ToString();
+                context.Products.Add(product);
+            }
+            else
+            {
+                Product dbEntry = context.Products.Find(product.Guid);
+
+                if(dbEntry != null)
+                {
+                    dbEntry.Name = product.Name;
+                    dbEntry.Description = product.Description;
+                    dbEntry.Price = product.Price;
+                    dbEntry.IsActive = product.IsActive;
+                    dbEntry.Shop = product.Shop;
+                }
+            }
+            context.SaveChanges();
+        }
     }
 }

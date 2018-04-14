@@ -9,7 +9,8 @@ namespace Domain.Entities
 {
     public class Shop
     {
-        public int Id { get; set; }
+        [Key]
+        public string Guid { get; set; }
 
         [Required(ErrorMessage = "Veuillez entrer un nom!")]
         [Display(Name = "Nom")]
@@ -43,6 +44,8 @@ namespace Domain.Entities
         [Display(Name = "Commander avant")]
         public string OrderBefore { get; set; }
 
+        [Required(ErrorMessage = "Veuillez préciser si le magasin est autorisé!")]
+        [Display(Name = "Actif")]
         public bool IsActive { get; set; }
 
         public IEnumerable<Product> Products { get; set; }

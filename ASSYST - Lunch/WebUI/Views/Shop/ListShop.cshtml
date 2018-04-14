@@ -7,20 +7,33 @@
     <div class="card-body">
         <table class="table table-striped table-bordered">
             <tr>
-                <th>Nom</th>
-                <th>Adresse</th>
-                <th>Téléphone</th>
-                <th>Email</th>
-                <th>Commander avant</th>
+                <th class="text-center">Nom</th>
+                <th class="text-center">Adresse</th>
+                <th class="text-center">Téléphone</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Commander avant</th>
+                <th class="text-center">Actif</th>
+                <th class="text-center">Actions</th>
             </tr>
             @foreach(var shop in Model)
             {
                 <tr>
-                    <td>@shop.Name</td>
-                    <td>@string.Concat(shop.ZipCode, " ", shop.City, " ", shop.Street, " ", shop.Number )</td>
-                    <td>@shop.Phone</td>
-                    <td>@shop.Mail</td>
-                    <td>@shop.OrderBefore</td>
+                    <td class="text-center">@shop.Name</td>
+                    <td class="text-center">@string.Concat(shop.ZipCode, " ", shop.City, ", ", shop.Street, " ", shop.Number )</td>
+                    <td class="text-center">@shop.Phone</td>
+                    <td class="text-center">@shop.Mail</td>
+                    <td class="text-center">@shop.OrderBefore</td>
+                    <td class="text-center">
+                        @if (shop.IsActive)
+                        {
+                            <label>Actif</label>
+                        }
+                        else
+                        {
+                            <label>Inactif</label>
+                        }
+                    </td>
+                    <td class="text-center">@Html.ActionLink("Modifier", "EditShop", new { shop.Guid })</td>
                 </tr>
             }
         </table>

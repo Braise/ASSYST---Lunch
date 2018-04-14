@@ -13,7 +13,7 @@ namespace Domain.Concrete
     {
         public EFDbContext() : base("LunchDB")
         {
-
+            //Database.ExecuteSqlCommand("TRUNCATE TABLE SHOP");
         }
 
         public DbSet<Extra> Extras { get; set; }
