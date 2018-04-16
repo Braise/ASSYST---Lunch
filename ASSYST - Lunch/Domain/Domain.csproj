@@ -78,6 +78,14 @@
     <Compile Include="Migrations\201804141415365_ChangeIdToGuid1.Designer.cs">
       <DependentUpon>201804141415365_ChangeIdToGuid1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804161918065_correctionRelation.cs" />
+    <Compile Include="Migrations\201804161918065_correctionRelation.Designer.cs">
+      <DependentUpon>201804161918065_correctionRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804161924094_correctionRelationII.cs" />
+    <Compile Include="Migrations\201804161924094_correctionRelationII.Designer.cs">
+      <DependentUpon>201804161924094_correctionRelationII.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -96,6 +104,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804141415365_ChangeIdToGuid1.resx">
       <DependentUpon>201804141415365_ChangeIdToGuid1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161918065_correctionRelation.resx">
+      <DependentUpon>201804161918065_correctionRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804161924094_correctionRelationII.resx">
+      <DependentUpon>201804161924094_correctionRelationII.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

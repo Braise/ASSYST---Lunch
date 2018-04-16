@@ -29,7 +29,6 @@ namespace WebUI.Controllers
         {
             EditProductViewModel model = new EditProductViewModel
             {
-                Product = new Product(),
                 Shops = _repositoryShop.Shops.Where(p => p.IsActive)
             };
             return View("EditProduct", model);
@@ -40,24 +39,38 @@ namespace WebUI.Controllers
             Product product = _repositoryProduct.Products.FirstOrDefault(p => p.Guid.Equals(guid));
             EditProductViewModel model = new EditProductViewModel
             {
-                Product = product,
+                Guid = product.Guid,
+                GuidShop = product.Shop?.Guid,
+                Name = product.Name,
+                Description = product.Description,
+                Price = product.Price,
+                IsActive = product.IsActive,
                 Shops = _repositoryShop.Shops.Where(p => p.IsActive)
             };
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult EditProduct(Product product)
+        public ActionResult EditProduct(EditProductViewModel productViewModel)
         {
             if (ModelState.IsValid)
             {
-                product.Shop = _repositoryShop.Shops.FirstOrDefault(s => s.Guid.Equals(product.Shop.Guid));
+                Product product = new Product
+                {
+                    Guid = productViewModel.Guid,
+                    Name = productViewModel.Name,
+                    Description = productViewModel.Description,
+                    Price = productViewModel.Price,
+                    IsActive = productViewModel.IsActive
+                };
+
+                product.Shop = _repositoryShop.Shops.FirstOrDefault(s => s.Guid.Equals(productViewModel.GuidShop));
                 _repositoryProduct.SaveProduct(product);
                 return RedirectToAction("ListProduct");
             }
             else
             {
-                return View(product);
+                return View(productViewModel);
             }
         }
     }

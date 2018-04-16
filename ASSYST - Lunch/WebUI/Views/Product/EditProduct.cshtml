@@ -6,7 +6,7 @@
 
     foreach(Shop shop in Model.Shops)
     {
-        if (Model.Product.Shop != null && shop.Guid.Equals(Model.Product.Shop.Guid))
+        if (!string.IsNullOrEmpty(Model.GuidShop) && shop.Guid.Equals(Model.GuidShop))
         {
             shopItems.Add(new SelectListItem
                 {
@@ -35,11 +35,12 @@
     @using (Html.BeginForm("EditProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div class="card-body">
-            @Html.HiddenFor(g => Model.Product.Guid)
+            @Html.HiddenFor(g => Model.Guid)
 
-                @foreach (ModelMetadata productProperties in ModelMetadataProviders.Current.GetMetadataForType(null, typeof(Product)).Properties)
+                @foreach (ModelMetadata productProperties in ViewData.ModelMetadata.Properties)
                 {
-                    if (!productProperties.PropertyName.Equals("IsActive") && !productProperties.PropertyName.Equals("Shop") && !productProperties.PropertyName.Equals("Guid"))
+                    if (!productProperties.PropertyName.Equals("IsActive") && !productProperties.PropertyName.Equals("Guid") 
+                        && !productProperties.PropertyName.Equals("GuidShop") && !productProperties.PropertyName.Equals("Shops"))
                     {
                         <div class="form-group">
                             <label>@productProperties.DisplayName</label>
@@ -56,8 +57,7 @@
                     }
                 }
 
-                @Html.DropDownListFor(p => Model.Product.Shop.Guid, shopItems, "Choisissez un magasin")
-            }
+                @Html.DropDownListFor(p => Model.GuidShop, shopItems, "Choisissez un magasin")
         </div>
         <div class="card-footer">
             <input type="submit" value="Enregistrer" class="btn btn-primary" />
